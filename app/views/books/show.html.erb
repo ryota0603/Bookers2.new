@@ -1,0 +1,9 @@
+<div>
+  <p>Userimage：<%= image_tag 'default-image.jpg' %></p>
+  <p>Title：<%= @book.title %></p>
+  <p>Opinion：<%= @book.body %></p>
+  <p>user：<%= @book.user.name %></p>
+   <% if @book.user == current_user %>
+    <%= link_to "Delate", book_path(@book), method: :delete %>
+  <% end %>
+</div>

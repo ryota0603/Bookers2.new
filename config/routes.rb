@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/show'
-  get 'users/edit'
+  resources :users
   resources :books
   root to: "homes#top",as: "top"
   get "/homes/about" => "homes#about", as: "about"

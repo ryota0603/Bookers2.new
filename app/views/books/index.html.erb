@@ -1,36 +1,31 @@
+<%= render 'users/info', user: @user %>
+
+<%= render 'books/form', book: @book %>
 
   
 
-
-<h1>Books</h1>
-  
-  
-         
-  <table>
-    <thead>
-      <tr>
-  			<th>Title</th>
-  			<th>Opinion</th>
-  			<th></th>
-  		</tr>
-    </thead>
-    <tbody>
-      <% @books.each do |book| %>
+<div class="col-md-8 offset-md-1">
+  <h1>Books</h1>
+    <table class='table table-hover table-inverse'>
+      <thead>
         <tr>
-          <td><%= image_tag book.user.get_profile_image(100,100) %></td>
-          <td>
-            <%= link_to book_path(book.id) do %>
-              <%= book.title %>
-            <% end %>
-          </td>
-        
-          <td><%= book.body %></td>
-          
-          
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= render 'users/info', user: @user %>
-
-  <%= render 'books/form', book: @book %>
+    			<th>Title</th>
+    			<th>Opinion</th>
+    			<th></th>
+    		</tr>
+      </thead>
+       <tbody>
+        <% @books.each do |book| %>
+          <tr>
+            <td><%= image_tag book.user.get_profile_image(100,100) %></td>
+            <td>
+              <%= link_to book_path(book.id) do %>
+                <%= book.title %>
+              <% end %>
+            </td>
+            <td><%= book.body %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+ </div>

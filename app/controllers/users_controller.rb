@@ -13,14 +13,24 @@ class UsersController < ApplicationController
   end
 
   def edit
+    user_id = params[:id].to_i
+  login_user_id = current_user.id
+  if(user_id != login_user_id)
+    redirect_to books_path
+  end
     
     @user = User.find(params[:id])
   end
   
   def update
+     user_id = params[:id].to_i
+  login_user_id = current_user.id
+  if(user_id != login_user_id)
+    redirect_to books_path
+  end
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to user_path(@user)
+    redirect_to user_path(@user.id)
   end
   
   private
@@ -28,5 +38,11 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :profile_image)
   end
-  
+  def is_matching_login_user
+    user_id = params[:id].to_i
+    login_user_id = current_user.id
+    if(user_id != login_user_id)
+      redirect_to post_images_path
+    end
+  end
 end

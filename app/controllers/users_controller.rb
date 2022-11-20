@@ -23,7 +23,7 @@ before_action :is_matching_login_user, only: [:edit, :update]
     if @user.update(user_params)
     redirect_to user_path(@user.id)
     else
-      @user = User.find(params[:id])
+     
       render :edit
     end
   end
